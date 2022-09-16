@@ -8,6 +8,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="container">
+      <form class="form" id="form">
+        <h2>Register Here</h2>
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input type="text " id="username" placeholder="Enter Username" />
+          <p>Error message</p>
+        </div>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="text " id="email" placeholder="Enter Email" />
+          <p>Error message</p>
+        </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input type="password " id="password" placeholder="Enter Password" />
+          <p>Error message</p>
+        </div>
+        <div class="form-control">
+          <label for="passwordConfirm">Confirm Password</label>
+          <input
+            type="text "
+            id="passwordConfirm"
+            placeholder="Enter Password Again"
+          />
+          <p>Error message</p>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
     <script src="form.js"></script>
   </body>
 </html>
