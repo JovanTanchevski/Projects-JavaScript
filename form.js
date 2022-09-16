@@ -7,13 +7,13 @@ let passwordConfirm = document.querySelector('#confirm');
 
 let showError = (input, message) => {
   let formControl = input.parentElement;
-  formControl.classList.add('form-control', 'error');
+  formControl.className = 'form-control error';
   let smallTxt = formControl.querySelector('small');
   smallTxt.innerText = message;
 };
 let showSuccess = (input) => {
   const formControl = input.parentElement;
-  formControl.classList.add('form-control', 'success');
+  formControl.className = 'form-control success';
 };
 
 let checkRequired = (arrInput) => {
@@ -49,9 +49,15 @@ let checkEmail = (input) => {
     showError(input, 'Email is not valid');
   }
 };
-
 let getWordUppercase = (input) => {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+};
+let passwordValidator = (input1, input2) => {
+  if (input1.value !== input2.value) {
+    showError(input2, "Password doesn't match");
+  } else {
+    showSuccess(input2);
+  }
 };
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -60,4 +66,5 @@ submitBtn.addEventListener('click', (e) => {
   checkLength(username, 3, 14);
   checkLength(password, 6, 18);
   checkEmail(email);
+  passwordValidator(password, passwordConfirm);
 });
