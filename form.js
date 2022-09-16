@@ -25,11 +25,29 @@ let checkRequired = (arrInput) => {
     }
   });
 };
+let checkLength = (input, min, max) => {
+  if (input.value.length < min) {
+    showError(
+      input,
+      `${getWordUppercase(input)} must be at least ${min} characters`
+    );
+  } else if (input.value.length > max) {
+    showError(
+      input,
+      `${getWordUppercase(input)}must be less than ${max} charatcers`
+    );
+  } else {
+    showSuccess(input);
+  }
+};
+
 let getWordUppercase = (input) => {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 };
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  let inputArr = [username, email, password, passwordConfirm];
-  checkRequired(inputArr);
+
+  checkRequired([username, email, password, passwordConfirm]);
+  checkLength(username, 3, 14);
+  checkLength(password, 6, 18);
 });
