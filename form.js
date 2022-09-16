@@ -40,14 +40,24 @@ let checkLength = (input, min, max) => {
     showSuccess(input);
   }
 };
+let checkEmail = (input) => {
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (re.test(input.value.trim())) {
+    showSuccess(input);
+  } else {
+    showError(input, 'Email is not valid');
+  }
+};
 
 let getWordUppercase = (input) => {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 };
-form.addEventListener('submit', (e) => {
+submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
   checkRequired([username, email, password, passwordConfirm]);
   checkLength(username, 3, 14);
   checkLength(password, 6, 18);
+  checkEmail(email);
 });
